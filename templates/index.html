@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:color="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+	font-family: Cambria;
+	padding: 20px;
+	background: #34414e;
+	color: white;
+}
+
+.header {
+  padding: 20px;
+  font-size: 40px;
+  background: #203e4a;
+  text-align: center;
+}
+
+.leftcolumn {
+  float: left;
+  width: 100%;
+}
+
+.card {
+  background-color: #203e4a;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100px;
+    padding: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    <a href="/" style="text-decoration:none">
+          <h1>Sten's Blog</h1>
+    </a>
+</div>
+
+<div class="row">
+    <div class="leftcolumn">
+        {% for posts in posts reversed %}
+        <div class="card">
+            <a style="text-decoration:none; color: black;" href="/post/{{posts.id}}">
+              <h2>{{posts.title}}</h2>
+              <h5>{{posts.created_at}}</h5>
+              <p>{{posts.body|truncatewords:20}}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
